@@ -14,5 +14,19 @@ export default {
     },
   },
 
-  plugins: [],
+  plugins: [require('daisyui')],
+
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          'primary-dark': '#000000',
+          'dark-md': '#481E14',
+          'dark-sm': '#9B3922',
+          'dark-xs': '#F2613F',
+          'font-primary': '#e5e7eb',
+        },
+      },
+    ],
+  },
 };

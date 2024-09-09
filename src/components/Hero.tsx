@@ -1,8 +1,14 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import MoonCanvas from './MoonCanvas';
 import { AnimatePresence, motion } from 'framer-motion';
+import { SectionContext, SectionContextType } from '../utils/context';
+import { useScroll } from '../utils/hooks/useSchroll';
 
 const Hero = (): JSX.Element => {
+  const [isVisible, setIsVisible] = useState(false);
+  const homeRef = useRef<HTMLDivElement>(null);
+  const { state, dispatch } = useContext<SectionContextType>(SectionContext);
+
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const textArray = useMemo(
     () => ['Web Developer', 'Back-end Developer', 'Front-end Developer'],
@@ -23,21 +29,32 @@ const Hero = (): JSX.Element => {
   useEffect(() => {
     setCurrentText(textArray[currentIndex]);
   }, [currentIndex, textArray]);
+  useScroll(setIsVisible, homeRef);
+  useEffect(() => {
+    if (isVisible) {
+      dispatch({ section: 'home' });
+    }
+  }, [isVisible]);
 
   return (
-    <div className="w-full h-screen relative text-font-primary">
+    <div
+      id="home"
+      className="w-full h-screen relative text-font-primary"
+      ref={homeRef}
+    >
       <div className="w-full h-full relative">
         {isLoaded && (
           <>
             <motion.div
+              whileInView={{ opacity: 1 }}
               initial={{ opacity: 0, x: -500, y: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.0, ease: 'easeInOut' }}
               className="absolute z-10 top-[20%] lg:top-1/2 left-10 lg:left-20 lg:-translate-y-1/2 text-font-primary"
             >
-              <p className="text-2xl lg:text-4xl font-bold">Hi, welcome</p>
+              <h1 className="text-2xl lg:text-4xl font-bold">Hi, welcome</h1>
               <p className="text-xl lg:text-3xl font-semibold">
-                I'm <span className="text-dark-xs ">Ryan Oktavian Saputra</span>
+                I am <span className="text-dark-xs">Ryan Oktavian Saputra</span>
               </p>
               <AnimatePresence mode="wait">
                 <motion.div
