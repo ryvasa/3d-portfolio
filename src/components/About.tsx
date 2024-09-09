@@ -47,13 +47,14 @@ const About = (): JSX.Element => {
             backgroundImage: "url('/images/aboutbg.svg')",
           }}
         ></motion.div>
-        {isVisible && (
-          <div className="w-full flex justify-center items-center relative h-fit ">
+
+        <div className="w-full flex justify-center items-center relative h-fit ">
+          {isVisible && (
             <div className="lg:w-4/5 w-11/12 flex flex-col lg:grid lg:grid-rows-5 lg:grid-flow-col justify-center items-center gap-4 h-full ">
               <motion.div
                 style={{ y: translateYToTop, x: translateXToLeft }}
                 initial={{ opacity: 0, x: -50, y: -50 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
+                animate={isVisible && { opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeInOut' }}
                 className="row-span-5 overflow-hidden rounded-xl bg-dark-lg/40 backdrop-blur-sm w-full h-full flex justify-center items-center "
               >
@@ -63,7 +64,7 @@ const About = (): JSX.Element => {
               <motion.div
                 style={{ y: translateYToTop, x: translateXToRight }}
                 initial={{ opacity: 0, x: 50, y: -50 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
+                animate={isVisible && { opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeInOut' }}
                 className="row-span-1 rounded-xl bg-dark-lg/40 backdrop-blur-sm py-4 px-8 w-full h-full flex justify-center items-center "
               >
@@ -72,7 +73,7 @@ const About = (): JSX.Element => {
               <motion.div
                 style={{ y: translateYToTop, x: translateXToRight }}
                 initial={{ opacity: 0, x: 50, y: -50 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
+                animate={isVisible && { opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeInOut' }}
                 className="row-span-4 rounded-xl bg-dark-lg/40 backdrop-blur-sm py-4 px-8 min-w-full min-h-full flex justify-center items-center"
               >
@@ -85,8 +86,8 @@ const About = (): JSX.Element => {
                 )}
               </motion.div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
