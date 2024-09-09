@@ -1,73 +1,92 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { SectionContext } from '../utils/context';
-import { useScroll } from '../utils/hooks/useSchroll';
+import { SectionContext } from '../libs/utils/context';
+import { useScroll as useScrollHook } from '../libs/hooks/useSchroll';
+import AnimationScrollText from './AnimationScrollText';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { TextGenerateEffect } from './TextGeneratorEffect';
+
+const text = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque alias ipsa quasi tenetur nobis officiis eius. Inventore, fuga repellat animi dicta ullam totam, quia eos minima adipisci quidem modi ipsum ut earum vero ex impedit nisi. Facilis nobis debitis laboriosam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam accusantium sunt totam voluptatum porro. Repellat quod quis quidem modi placeat tempore pariatur libero fugit eius qui quo earum doloremque laudantium atque consequatur cupiditate animi velit, minus odio praesentium nobis impedit temporibus tenetur! Maxime voluptatum vitae dignissimos ab saepe quibusdam dolorem distinctio iusto dolores. Ratione quam nostrum asperiores ex incidunt facere quae voluptatem accusamus unde dolorem. Illo, repudiandae! Obcaecati quisquam mollitia quidem molestiae culpa ab, et rerum, fugit eum tenetur vitae voluptatum unde laudantium perspiciatis placeat dolores delectus maxime architecto sunt earum amet officiis, quia omnis! Pariatur earum deserunt assumenda.`;
 
 const About = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
   const aboutRef = useRef<HTMLDivElement>(null);
-  const { state, dispatch } = useContext(SectionContext);
+  const { dispatch } = useContext(SectionContext);
 
-  useScroll(setIsVisible, aboutRef);
+  useScrollHook(setIsVisible, aboutRef);
 
   useEffect(() => {
     if (isVisible) {
-      console.log('Dispatching about section');
       dispatch({ section: 'about' });
     }
   }, [isVisible, dispatch]);
 
-  // Observe and log state changes
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+  // Parallax effect implementation
+  const { scrollYProgress } = useScroll({
+    target: aboutRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const translateYToTop = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const translateXToLeft = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const translateXToRight = useTransform(scrollYProgress, [0, 1], [0, 200]);
 
   return (
     <div className="relative">
       <div className="w-full -top-10 bg-gradient-to-b from-primary-dark/0 via-primary-dark to-primary-dark absolute min-h-20"></div>
       <div
-        className="bg-primary-dark pt-10 text-font-primary"
+        className="bg-primary-dark pt-10 flex justify-center items-center text-font-primary min-h-screen"
         ref={aboutRef}
         id="about"
       >
-        <div className="w-full flex justify-center items-center">
-          <div className="lg:w-4/5 w-full flex justify-center items-center gap-4 ">
-            <div className="flex-1">
-              <p>
-                Corporis doloribus quidem minus accusantium! Cupiditate nulla
-                veniam sapiente! Suscipit rem sapiente sit magni alias
-                accusantium pariatur amet voluptas autem perspiciatis minima
-                aliquam possimus, natus veritatis tenetur obcaecati iste vel
-                impedit ab! Fuga nulla voluptatum natus vero impedit animi
-                dolores ut in aliquid illum vitae maiores, blanditiis incidunt
-                ipsam ea perspiciatis sapiente! Cupiditate illo at culpa earum,
-                provident nobis natus fugiat voluptatibus, voluptates modi illum
-                architecto veniam delectus numquam necessitatibus tempore
-                corrupti, ab maiores sunt dolorum excepturi? Quaerat itaque
-                quasi sunt, error id cupiditate fugit.
-              </p>
-            </div>
-            <div className="flex flex-1 flex-col gap-4">
-              <div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Doloremque alias ipsa quasi tenetur nobis officiis eius.
-                  Inventore, fuga repellat animi dicta ullam totam, quia eos
-                  minima adipisci quidem modi ipsum ut earum vero ex impedit
-                  nisi. Facilis nobis debitis laboriosam?
-                </p>
-              </div>
-              <div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Doloremque alias ipsa quasi tenetur nobis officiis eius.
-                  Inventore, fuga repellat animi dicta ullam totam, quia eos
-                  minima adipisci quidem modi ipsum ut earum vero ex impedit
-                  nisi. Facilis nobis debitis laboriosam?
-                </p>
-              </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isVisible && { opacity: 1 }}
+          transition={{ duration: 0.7, ease: 'easeInOut' }}
+          className="absolute inset-0 bg-contain bg-center bg-no-repeat "
+          style={{
+            backgroundImage: "url('/images/aboutbg.svg')",
+          }}
+        ></motion.div>
+        {isVisible && (
+          <div className="w-full flex justify-center items-center relative h-fit ">
+            <div className="lg:w-4/5 w-11/12 flex flex-col lg:grid lg:grid-rows-5 lg:grid-flow-col justify-center items-center gap-4 h-full ">
+              <motion.div
+                style={{ y: translateYToTop, x: translateXToLeft }}
+                initial={{ opacity: 0, x: -50, y: -50 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.7, ease: 'easeInOut' }}
+                className="row-span-5 overflow-hidden rounded-xl bg-dark-lg/40 backdrop-blur-sm w-full h-full flex justify-center items-center "
+              >
+                <span className="w-full h-full absolute z-10 bg-gradient-to-b from-[#0E0E0E]/0 via-[#0E0E0E]/20 to-[#0E0E0E]"></span>
+                <motion.img src="/images/pic.png" alt="photo" className="" />
+              </motion.div>
+              <motion.div
+                style={{ y: translateYToTop, x: translateXToRight }}
+                initial={{ opacity: 0, x: 50, y: -50 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.7, ease: 'easeInOut' }}
+                className="row-span-1 rounded-xl bg-dark-lg/40 backdrop-blur-sm py-4 px-8 w-full h-full flex justify-center items-center "
+              >
+                <AnimationScrollText className="text-dark-xs" />
+              </motion.div>
+              <motion.div
+                style={{ y: translateYToTop, x: translateXToRight }}
+                initial={{ opacity: 0, x: 50, y: -50 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ duration: 0.7, ease: 'easeInOut' }}
+                className="row-span-4 rounded-xl bg-dark-lg/40 backdrop-blur-sm py-4 px-8 min-w-full min-h-full flex justify-center items-center"
+              >
+                {isVisible && (
+                  <TextGenerateEffect
+                    initialDelay={0.5}
+                    words={text}
+                    duration={0.3}
+                  />
+                )}
+              </motion.div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

@@ -8,7 +8,6 @@ function App(): JSX.Element {
       <Navbar />
       <Hero />
       <About />
-
       <Project />
     </div>
   );

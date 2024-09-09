@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { useScroll } from '../utils/hooks/useSchroll';
-import { SectionContext } from '../utils/context';
+import { useScroll } from '../libs/hooks/useSchroll';
+import { SectionContext } from '../libs/utils/context';
 
 const Project = () => {
   const [isVisible, setIsVisible] = useState(false);

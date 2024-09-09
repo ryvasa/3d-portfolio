@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useContext, useState } from 'react';
-import { SectionContext } from '../utils/context';
+import { SectionContext } from '../libs/utils/context';
 
 const Navbar = (): JSX.Element => {
   const [isAtTop, setIsAtTop] = useState<boolean>(true);

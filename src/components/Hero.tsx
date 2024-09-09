@@ -1,41 +1,34 @@
-import { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import MoonCanvas from './MoonCanvas';
-import { AnimatePresence, motion } from 'framer-motion';
-import { SectionContext, SectionContextType } from '../utils/context';
-import { useScroll } from '../utils/hooks/useSchroll';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { SectionContext, SectionContextType } from '../libs/utils/context';
+import { useScroll as useScrollHook } from '../libs/hooks/useSchroll';
+import AnimationScrollText from './AnimationScrollText';
 
 const Hero = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
   const homeRef = useRef<HTMLDivElement>(null);
-  const { state, dispatch } = useContext<SectionContextType>(SectionContext);
+  const { dispatch } = useContext<SectionContextType>(SectionContext);
 
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  const textArray = useMemo(
-    () => ['Web Developer', 'Back-end Developer', 'Front-end Developer'],
-    []
-  );
 
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [currentText, setCurrentText] = useState<string>(textArray[0]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % textArray.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [textArray.length]);
-
-  useEffect(() => {
-    setCurrentText(textArray[currentIndex]);
-  }, [currentIndex, textArray]);
-  useScroll(setIsVisible, homeRef);
+  useScrollHook(setIsVisible, homeRef);
   useEffect(() => {
     if (isVisible) {
       dispatch({ section: 'home' });
     }
   }, [isVisible]);
 
+  // Parallax effect implementation
+  const { scrollYProgress } = useScroll({
+    target: homeRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const bgTranslateYToTop = useTransform(scrollYProgress, [0, 1], [0, -300]);
+  const translateYToTop = useTransform(scrollYProgress, [0, 1], [-50, -300]);
+  const translateXToLeft = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const translateXToRight = useTransform(scrollYProgress, [0, 1], [0, 200]);
   return (
     <div
       id="home"
@@ -46,9 +39,13 @@ const Hero = (): JSX.Element => {
         {isLoaded && (
           <>
             <motion.div
+              style={{
+                y: translateYToTop,
+                x: translateXToLeft,
+              }}
               whileInView={{ opacity: 1 }}
-              initial={{ opacity: 0, x: -500, y: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -100, y: -100 }}
+              animate={{ opacity: 1, x: 0, y: -50 }}
               transition={{ duration: 1.0, ease: 'easeInOut' }}
               className="absolute z-10 top-[20%] lg:top-1/2 left-10 lg:left-20 lg:-translate-y-1/2 text-font-primary"
             >
@@ -56,22 +53,15 @@ const Hero = (): JSX.Element => {
               <p className="text-xl lg:text-3xl font-semibold">
                 I am <span className="text-dark-xs">Ryan Oktavian Saputra</span>
               </p>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentText}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.5, ease: 'easeInOut' }}
-                  className="text-xl lg:text-3xl font-semibold"
-                >
-                  {currentText}
-                </motion.div>
-              </AnimatePresence>
+              <AnimationScrollText />
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, x: 500, y: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              style={{
+                y: translateYToTop,
+                x: translateXToRight,
+              }}
+              initial={{ opacity: 0, x: 100, y: -100 }}
+              animate={{ opacity: 1, x: 0, y: -50 }}
               transition={{ duration: 1.0, ease: 'easeInOut' }}
               className="absolute lg:w-fit w-full z-10 flex justify-center items-center lg:top-1/2 top-[99%] lg:right-20 lg:-translate-y-1/2 text-font-primary"
             >
@@ -162,6 +152,9 @@ const Hero = (): JSX.Element => {
           </>
         )}
         <motion.div
+          style={{
+            y: bgTranslateYToTop,
+          }}
           className="h-full w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
