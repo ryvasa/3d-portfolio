@@ -5,7 +5,7 @@ import { SectionContext } from '../libs/utils/context';
 const Project = () => {
   const [isVisible, setIsVisible] = useState(false);
   const projectRef = useRef<HTMLDivElement>(null);
-  const { state, dispatch } = useContext(SectionContext);
+  const { dispatch } = useContext(SectionContext);
 
   useScroll(setIsVisible, projectRef);
   useEffect(() => {
