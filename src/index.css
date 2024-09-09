@@ -19,10 +19,14 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 }
 
 * {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+
   font-family: 'SUSE', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;

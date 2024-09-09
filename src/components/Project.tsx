@@ -7,7 +7,7 @@ const Project = () => {
   const projectRef = useRef<HTMLDivElement>(null);
   const { dispatch } = useContext(SectionContext);
 
-  useScroll(setIsVisible, projectRef);
+  useScroll(setIsVisible, projectRef, 0.5);
   useEffect(() => {
     if (isVisible) {
       dispatch({ section: 'projects' });

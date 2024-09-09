@@ -1,6 +1,8 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Stars, useGLTF } from '@react-three/drei';
 import { useEffect } from 'react';
+import { EffectComposer, Bloom } from '@react-three/postprocessing';
+import * as THREE from 'three';
 
 const MoonCanvas = ({ onLoad }: { onLoad: () => void }): JSX.Element => {
   const { scene } = useGLTF('./moon/scene.gltf');
@@ -10,7 +12,16 @@ const MoonCanvas = ({ onLoad }: { onLoad: () => void }): JSX.Element => {
     setTimeout(() => {
       onLoad(); // Panggil onLoad ketika model selesai dimuat
     }, 300);
-  }, [onLoad]);
+
+    scene.traverse((object) => {
+      if (object instanceof THREE.Mesh) {
+        const material = object.material as THREE.MeshStandardMaterial;
+        material.emissive = new THREE.Color(0xaaaaaa); // Warna cahaya bulan
+        material.emissiveIntensity = 2.0; // Intensitas cahaya bulan
+        material.emissiveMap = material.map; // Menggunakan tekstur asli sebagai peta emissive
+      }
+    });
+  }, [onLoad, scene]);
 
   return (
     <Canvas
@@ -18,7 +29,13 @@ const MoonCanvas = ({ onLoad }: { onLoad: () => void }): JSX.Element => {
       frameloop="demand"
       camera={{ position: [-4, 3, 6], fov: 75, near: 0.1, far: 200 }}
     >
-      <directionalLight position={[5, 5, 5]} intensity={2} />
+      {/* Pencahayaan bulan */}
+      <directionalLight
+        position={[-5, 5, 5]} // Posisikan cahaya agar mengenai sebagian bulan
+        intensity={3} // Sesuaikan intensitas cahaya
+        castShadow
+      />
+      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
       <Stars
         radius={70}
         depth={10}
@@ -36,6 +53,14 @@ const MoonCanvas = ({ onLoad }: { onLoad: () => void }): JSX.Element => {
         minPolarAngle={Math.PI / 2}
         enablePan={false}
       />
+      {/* Tambahkan Bloom Effect di sini */}
+      <EffectComposer>
+        <Bloom
+          luminanceThreshold={0}
+          luminanceSmoothing={0.9}
+          intensity={1.0}
+        />
+      </EffectComposer>
     </Canvas>
   );
 };

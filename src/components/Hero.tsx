@@ -25,7 +25,6 @@ const Hero = (): JSX.Element => {
     offset: ['start start', 'end start'],
   });
 
-  const bgTranslateYToTop = useTransform(scrollYProgress, [0, 1], [0, -300]);
   const translateYToTop = useTransform(scrollYProgress, [0, 1], [-50, -300]);
   const translateXToLeft = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const translateXToRight = useTransform(scrollYProgress, [0, 1], [0, 200]);
@@ -152,9 +151,6 @@ const Hero = (): JSX.Element => {
           </>
         )}
         <motion.div
-          style={{
-            y: bgTranslateYToTop,
-          }}
           className="h-full w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

@@ -2,20 +2,27 @@ import { useEffect } from 'react';
 
 export const useScroll = (
   setIsVisible: React.Dispatch<React.SetStateAction<boolean>>,
-  ref: React.RefObject<HTMLElement>
+  ref: React.RefObject<HTMLElement>,
+  handleVisible?: () => void,
+  threshold?: number
 ) => {
   useEffect(() => {
+    console.log('Observing:', ref.current);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            observer.unobserve(entry.target);
+            if (handleVisible) {
+              handleVisible();
+            }
+          } else {
+            setIsVisible(false);
           }
         });
       },
       {
-        threshold: 0.6,
+        threshold: threshold ? threshold : 0.6,
       }
     );
 
