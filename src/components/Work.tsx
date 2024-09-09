@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { SectionContext } from '../libs/utils/context';
 import { useScroll as useScrollHook } from '../libs/hooks/useSchroll';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { TextGenerateEffect } from './TextGeneratorEffect';
+// import { TextGenerateEffect } from './TextGeneratorEffect';
 
 const expirience = [
   {
