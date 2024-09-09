@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { SectionContext } from '../libs/utils/context';
 import { useScroll as useScrollHook } from '../libs/hooks/useSchroll';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { TextGenerateEffect } from './TextGeneratorEffect';
 
 const expirience = [
   {
@@ -59,9 +60,12 @@ const Work = () => {
     offset: ['start end', 'end start'],
   });
 
-  const translateXToLeft = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const translateYToTop = useTransform(scrollYProgress, [0, 1], [0, -50]);
-  const translateXToRight = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const translateYToTop = useTransform(scrollYProgress, [0, 1], [100, -400]);
+  const lineTranslateYToTop = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [100, -200]
+  );
 
   return (
     <div
@@ -79,18 +83,22 @@ const Work = () => {
           backgroundImage: "url('/images/workbg.svg')",
         }}
       ></motion.div>
-      <div className="lg:w-4/5 w-11/12 relative z-[2]  flex justify-center items-center ">
+      <div className="w-4/5  relative z-[2]  flex justify-center items-center ">
         <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
           {expirience.map((exp, index) => (
             <li key={index}>
               {index !== 0 && (
                 <motion.hr
-                  style={{ y: translateYToTop }}
                   className="bg-dark-xs"
+                  style={{
+                    y: lineTranslateYToTop,
+                  }}
                 />
               )}
               <motion.div
-                style={{ y: translateYToTop }}
+                style={{
+                  y: lineTranslateYToTop,
+                }}
                 className="timeline-middle"
               >
                 <svg
@@ -109,27 +117,21 @@ const Work = () => {
               <motion.div
                 style={{
                   y: translateYToTop,
-                  x: index % 2 === 0 ? translateXToLeft : translateXToRight,
                 }}
-                initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-                animate={firstVisible && { opacity: 1, x: 0 }}
+                initial={{ opacity: 0 }}
+                animate={firstVisible && { opacity: 1, y: -50 }}
                 transition={{ duration: 0.7, ease: 'easeInOut' }}
                 className={`${
                   index % 2 !== 0
                     ? 'timeline-end'
                     : 'timeline-start  md:text-end'
-                } my-5 rounded-xl bg-dark-lg/50 backdrop-blur-sm p-4 shadow-lg drop-shadow-lg lg:w-[500px] `}
+                } my-5 rounded-xl bg-dark-lg/50 backdrop-blur-sm p-4 shadow-lg drop-shadow-lg lg:w-[500px] w-full  `}
               >
                 <time className="font-mono italic">{exp.time}</time>
                 <div className="text-lg font-black text-dark-xs">
                   {exp.title}
                 </div>
                 {firstVisible ? (
-                  // <TextGenerateEffect
-                  //   initialDelay={0.5}
-                  //   words={exp.description}
-                  //   duration={0.3}
-                  // />
                   <p>{exp.description}</p>
                 ) : (
                   <div className="flex flex-col gap-2">
@@ -144,8 +146,10 @@ const Work = () => {
               </motion.div>
               {index !== expirience.length - 1 && (
                 <motion.hr
-                  style={{ y: translateYToTop }}
                   className="bg-dark-xs"
+                  style={{
+                    y: lineTranslateYToTop,
+                  }}
                 />
               )}
             </li>

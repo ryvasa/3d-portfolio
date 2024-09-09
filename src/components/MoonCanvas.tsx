@@ -52,6 +52,7 @@ const MoonCanvas = ({ onLoad }: { onLoad: () => void }): JSX.Element => {
         maxPolarAngle={Math.PI / 2}
         minPolarAngle={Math.PI / 2}
         enablePan={false}
+        enableRotate={false} // Nonaktifkan rotasi jika perlu
       />
       {/* Tambahkan Bloom Effect di sini */}
       <EffectComposer>

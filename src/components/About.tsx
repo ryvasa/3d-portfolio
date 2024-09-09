@@ -33,15 +33,12 @@ const About = (): JSX.Element => {
     offset: ['start start', 'end start'],
   });
 
-  const translateYToTop = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const translateXToLeft = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const translateXToRight = useTransform(scrollYProgress, [0, 1], [0, 100]);
-
+  const translateYToTop = useTransform(scrollYProgress, [0, 1], [0, -400]);
   return (
     <div className="relative">
-      <div className="w-full -top-10 bg-gradient-to-b from-primary-dark/0 via-primary-dark to-primary-dark absolute min-h-20"></div>
+      <div className="w-full -top-40 bg-gradient-to-b from-primary-dark/0 via-primary-dark/80 to-primary-dark absolute min-h-40"></div>
       <div
-        className="bg-primary-dark pt-10 flex justify-center items-center text-font-primary min-h-screen"
+        className=" bg-primary-dark pt-10 flex justify-center items-center text-font-primary min-h-screen"
         ref={aboutRef}
         id="about"
       >
@@ -49,17 +46,14 @@ const About = (): JSX.Element => {
           initial={{ opacity: 0 }}
           animate={firstVisible && { opacity: 1 }}
           transition={{ duration: 0.7, ease: 'easeInOut' }}
-          className="absolute inset-0 bg-contain bg-center bg-no-repeat "
-          style={{
-            backgroundImage: "url('/images/aboutbg.svg')",
-          }}
+          className={`absolute inset-0 bg-contain bg-center bg-no-repeat lg:bg-[url('/images/aboutbg.svg')] bg-[url('/images/aboutmobile.svg')]`}
         ></motion.div>
 
         <div className="w-full flex justify-center items-center relative h-fit py-10 ">
           {firstVisible && (
-            <div className="lg:w-4/5 w-11/12 flex flex-col lg:grid lg:grid-rows-5 lg:grid-flow-col justify-center items-center gap-4 h-full ">
+            <div className="w-4/5  flex flex-col lg:grid lg:grid-rows-5 lg:grid-flow-col justify-center items-center gap-4 h-full ">
               <motion.div
-                style={{ y: translateYToTop, x: translateXToLeft }}
+                style={{ y: translateYToTop }}
                 initial={{ opacity: 0, x: -50, y: -50 }}
                 animate={firstVisible && { opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeInOut' }}
@@ -69,7 +63,7 @@ const About = (): JSX.Element => {
                 <motion.img src="/images/pic.png" alt="photo" className="" />
               </motion.div>
               <motion.div
-                style={{ y: translateYToTop, x: translateXToRight }}
+                style={{ y: translateYToTop }}
                 initial={{ opacity: 0, x: 50, y: -50 }}
                 animate={firstVisible && { opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeInOut' }}
@@ -78,7 +72,7 @@ const About = (): JSX.Element => {
                 <AnimationScrollText className="text-dark-xs" />
               </motion.div>
               <motion.div
-                style={{ y: translateYToTop, x: translateXToRight }}
+                style={{ y: translateYToTop }}
                 initial={{ opacity: 0, x: 50, y: -50 }}
                 animate={firstVisible && { opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeInOut' }}
