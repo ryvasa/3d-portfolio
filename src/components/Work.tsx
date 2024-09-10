@@ -1,8 +1,8 @@
-import { useContext, useEffect, useMemo, useRef, useState } from "react";
-import { SectionContext } from "../libs/utils/context";
-import { useScroll as useScrollHook } from "../libs/hooks/useSchroll";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { TextGenerateEffect } from "./TextGeneratorEffect";
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { SectionContext } from '../libs/utils/context';
+import { useScroll as useScrollHook } from '../libs/hooks/useSchroll';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { TextGenerateEffect } from './TextGeneratorEffect';
 
 const Work = () => {
   const [firstVisible, setFirstVisible] = useState(false);
@@ -14,38 +14,40 @@ const Work = () => {
     () => [
       {
         time: 1984,
-        title: "First Macintosh computer",
+        title: 'First Macintosh computer',
         description: `The Apple Macintosh—later rebranded as the Macintosh 128K—is the original Apple Macintosh personal computer. It played a pivotal role in establishing desktop publishing as a general office function. The motherboard, a 9 in (23 cm) CRT monitor, and a floppy drive were housed in a beige case with integrated carrying handle; it came with a keyboard and single-button mouse.`,
       },
       {
         time: 1998,
-        title: "iMac",
+        title: 'iMac',
         description: `iMac is a family of all-in-one Mac desktop computers designed and built by Apple Inc. It has been the primary part of Apple's consumer desktop offerings since its debut in August 1998, and has evolved through seven distinct forms`,
       },
       {
         time: 2001,
-        title: "iPod",
+        title: 'iPod',
         description: `The iPod is a discontinued series of portable media players and multi-purpose mobile devices designed and marketed by Apple Inc. The first version was released on October 23, 2001, about 8+1⁄2 months after the Macintosh version of iTunes was released. Apple sold an estimated 450 million iPod products as of 2022. Apple discontinued the iPod product line on May 10, 2022. At over 20 years, the iPod brand is the oldest to be discontinued by Apple`,
       },
       {
         time: 2007,
-        title: "iPhone",
+        title: 'iPhone',
         description: ` iPhone is a line of smartphones produced by Apple Inc. that use Apple's own iOS mobile operating system. The first-generation iPhone was announced by then-Apple CEO Steve Jobs on January 9, 2007. Since then, Apple has annually released new iPhone models and iOS updates. As of November 1, 2018, more than 2.2 billion iPhones had been sold. As of 2022, the iPhone accounts for 15.6% of global smartphone market share`,
       },
       {
         time: 2015,
-        title: "Apple Watch",
+        title: 'Apple Watch',
         description: `The Apple Watch is a line of smartwatches produced by Apple Inc.
  It incorporates fitness tracking, health-oriented capabilities,
  and wireless telecommunication, and integrates with iOS and other
  Apple products and services`,
       },
     ],
-    [],
+    []
   );
 
   const handleVisible = (): void => {
     if (!firstVisible) {
+      console.log('tesst');
+
       setFirstVisible(true);
     }
   };
@@ -54,13 +56,13 @@ const Work = () => {
 
   useEffect(() => {
     if (isVisible) {
-      dispatch({ section: "work" });
+      dispatch({ section: 'work' });
     }
   }, [isVisible, dispatch]);
 
   const { scrollYProgress } = useScroll({
     target: workRef,
-    offset: ["start end", "end start"],
+    offset: ['start end', 'end start'],
   });
 
   const translateYToTop = useTransform(scrollYProgress, [0, 1], [200, -300]);
@@ -75,7 +77,7 @@ const Work = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, ease: "easeInOut" }}
+        transition={{ duration: 0.7, ease: 'easeInOut' }}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-primary-dark "
         style={{
           backgroundImage: "url('/images/workbg.svg')",
@@ -108,11 +110,15 @@ const Work = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={firstVisible && { opacity: 1 }}
-                transition={{ delay: index, duration: 0.7, ease: "easeInOut" }}
+                transition={{
+                  delay: index / 10,
+                  duration: 0.7,
+                  ease: 'easeInOut',
+                }}
                 className={`${
                   index % 2 !== 0
-                    ? "timeline-end"
-                    : "timeline-start  md:text-end"
+                    ? 'timeline-end'
+                    : 'timeline-start  md:text-end'
                 } my-5 rounded-xl bg-dark-lg/50 backdrop-blur-sm p-4 shadow-sm lg:w-[500px] w-full  `}
               >
                 <time className="font-mono italic">{exp.time}</time>
@@ -122,8 +128,8 @@ const Work = () => {
                 {firstVisible && (
                   <TextGenerateEffect
                     words={exp.description}
-                    initialDelay={index}
-                    chunkSize={exp.description.split(" ").length}
+                    initialDelay={index / 10}
+                    chunkSize={exp.description.split(' ').length}
                   />
                 )}
               </motion.div>

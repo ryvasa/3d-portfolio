@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { cn } from "../libs/utils/cn";
+import { useCallback, useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { cn } from '../libs/utils/cn';
 
 export const FlipWords = ({
   words,
@@ -44,7 +44,7 @@ export const FlipWords = ({
           y: 0,
         }}
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 100,
           damping: 10,
         }}
@@ -52,30 +52,30 @@ export const FlipWords = ({
           opacity: 0,
           y: -40,
           x: 40,
-          filter: "blur(4px)",
+          filter: 'blur(4px)',
           scale: 1.2,
-          position: "absolute",
+          position: 'absolute',
         }}
         className={cn(className)}
         key={currentWord}
       >
         {/* edit suggested by Sajal: https://x.com/DewanganSajal */}
-        {currentWord.split(" ").map((word, wordIndex) => (
+        {currentWord.split(' ').map((word, wordIndex) => (
           <motion.span
             key={word + wordIndex}
-            initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 10, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{
               delay: wordIndex * 0.3,
               duration: 0.3,
             }}
             className="inline-block whitespace-nowrap"
           >
-            {word.split("").map((letter, letterIndex) => (
+            {word.split('').map((letter, letterIndex) => (
               <motion.span
                 key={word + letterIndex}
-                initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 10, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{
                   delay: wordIndex * 0.3 + letterIndex * 0.05,
                   duration: 0.2,

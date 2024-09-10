@@ -1,30 +1,31 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from 'react';
 // import MoonCanvas from "./MoonCanvas";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { SectionContext, SectionContextType } from "../libs/utils/context";
-import { useScroll as useScrollHook } from "../libs/hooks/useSchroll";
-import { BackgroundBeams } from "./Background";
-import { FlipWords } from "./FlipWords";
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { SectionContext, SectionContextType } from '../libs/utils/context';
+import { useScroll as useScrollHook } from '../libs/hooks/useSchroll';
+import { BackgroundBeams } from './Background';
+import { FlipWords } from './FlipWords';
+import { Globe } from './Globe';
 
 const Hero = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
   const homeRef = useRef<HTMLDivElement>(null);
-  const { dispatch } = useContext<SectionContextType>(SectionContext);
+  const { state, dispatch } = useContext<SectionContextType>(SectionContext);
 
   // const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
-  useScrollHook(setIsVisible, homeRef, () => {}, 0.3);
+  useScrollHook(setIsVisible, homeRef, () => {}, 0.5);
 
   useEffect(() => {
     if (isVisible) {
-      dispatch({ section: "home" });
+      dispatch({ section: 'home' });
     }
   }, [isVisible]);
 
   // Parallax effect implementation
   const { scrollYProgress } = useScroll({
     target: homeRef,
-    offset: ["start start", "end start"],
+    offset: ['start start', 'end start'],
   });
 
   const translateYToTop = useTransform(scrollYProgress, [0, 1], [0, -200]);
@@ -44,7 +45,7 @@ const Hero = (): JSX.Element => {
           whileInView={{ opacity: 1 }}
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.0, ease: "easeInOut" }}
+          transition={{ duration: 1.0, ease: 'easeInOut' }}
           className="w-full h-full relative z-[1]"
         >
           <div className="absolute z-10 top-[20%] lg:top-1/2 left-10 lg:left-20 lg:-translate-y-1/2 text-font-primary">
@@ -52,14 +53,16 @@ const Hero = (): JSX.Element => {
             <p className="text-xl lg:text-3xl font-semibold">
               I am <span className="text-dark-xs">Ryan Oktavian Saputra</span>
             </p>
-            <FlipWords
-              className="text-xl lg:text-3xl font-semibold"
-              words={[
-                "Web Developer",
-                "Back-end Developer",
-                "Front-end Developer",
-              ]}
-            />
+            {isVisible && (
+              <FlipWords
+                className="text-xl lg:text-3xl font-semibold"
+                words={[
+                  'Web Developer',
+                  'Back-end Developer',
+                  'Front-end Developer',
+                ]}
+              />
+            )}
           </div>
           <div className="absolute lg:w-fit w-full z-10 flex justify-center items-center lg:top-1/2 top-[90%] lg:right-20 lg:-translate-y-1/2 text-font-primary">
             <ul className="flex gap-2 lg:flex-col lg:w-60 px-4 lg:px-0">
@@ -147,19 +150,22 @@ const Hero = (): JSX.Element => {
             </ul>
           </div>
         </motion.div>
-        <motion.div
-          className="h-full w-full fixed top-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.0, ease: "easeInOut" }}
-        >
-          {/* <MoonCanvas
+        <div className="fixed top-0 w-full h-full ">
+          <motion.div
+            className="h-full w-full flex justify-end sticky top-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.0, ease: 'easeInOut' }}
+          >
+            {/* <MoonCanvas
             onLoad={() => {
               setIsLoaded(true);
             }}
           />*/}
-          <BackgroundBeams />
-        </motion.div>
+            <Globe className="z-10 bg-primary-dark" />
+            {/* <BackgroundBeams /> */}
+          </motion.div>
+        </div>
       </div>
     </div>
   );

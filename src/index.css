@@ -22,7 +22,10 @@
     overflow-x: hidden;
   }
 }
-
+body {
+  width: 100vw;
+  @apply bg-primary-dark;
+}
 * {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
