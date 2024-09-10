@@ -36,3 +36,7 @@
 *:hover {
   scrollbar-color: auto;
 }
+
+#work-list {
+  will-change: transform;
+}
