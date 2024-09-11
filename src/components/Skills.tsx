@@ -33,9 +33,8 @@ const Skills = () => {
     <div
       id="skills"
       ref={skillsRef}
-      className="relative flex justify-center items-center min-h-screen"
+      className="relative flex justify-center items-center min-h-screen "
     >
-      <div className="absolute bg-gradient-to-b from-primary-dark/0 via-primary-dark/50 to-primary-dark top-0 h-full w-full"></div>
       <div className="relative flex justify-center items-center w-full">
         <div className="lg:lg:w-4/5 w-[95%] relative z-10">
           <motion.div

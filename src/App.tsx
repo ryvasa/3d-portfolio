@@ -6,21 +6,20 @@ import Work from "./components/Work";
 import Contact from "./components/Contact";
 import Skills from "./components/Skills";
 import Background from "./components/Background";
-import { TimelineDemo } from "./components/TimeLine";
 function App(): JSX.Element {
   return (
     <div className="bg-primary-dark text-font-primary">
       <Navbar />
       <Hero />
       <About />
+      <Project />
       <div className="relative">
         {/*
-        <Background />
          */}
-        <Project />
+        <Background />
         <Skills />
+        <Work />
       </div>
-      <Work />
       {/*
       <TimelineDemo />
        */}

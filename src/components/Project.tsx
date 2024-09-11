@@ -31,8 +31,8 @@ const Project = () => {
   const translateYToTop = useTransform(scrollYProgress, [0, 1], [100, -300]);
 
   return (
-    <div id="projects" ref={projectRef} className="min-h-screen relative">
-      <div className="absolute bg-gradient-to-b from-primary-dark via-primary-dark/50 to-primary-dark/0 top-0 h-full w-full "></div>
+    <div id="projects" ref={projectRef} className="min-h-screen relative z-[1]">
+      <div className="absolute bg-gradient-to-b from-primary-dark via-primary-dark/0 to-primary-dark top-0 h-full w-full"></div>
       <div className="flex justify-center items-center">
         <motion.div
           style={{ y: translateYToTop }}

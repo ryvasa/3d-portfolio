@@ -7,7 +7,7 @@ import { FlipWords } from "./FlipWords";
 
 const About = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
-  const [firstVisible, setFirstVisible] = useState(true);
+  const [firstVisible, setFirstVisible] = useState(false);
   const aboutRef = useRef<HTMLDivElement>(null);
   const { dispatch } = useContext(SectionContext);
 
@@ -37,26 +37,27 @@ const About = (): JSX.Element => {
     offset: ["start start", "end start"],
   });
 
-  const translateYToTop = useTransform(scrollYProgress, [0, 1], [0, -300]);
+  const translateYToTop = useTransform(scrollYProgress, [0, 1], [100, -300]);
 
   return (
     <div className="relative" ref={aboutRef}>
-      <div className="w-full -top-20 bg-gradient-to-b from-primary-dark/0 via-primary-dark/80 to-primary-dark absolute min-h-40"></div>
+      <div className="w-full -top-20 bg-gradient-to-b from-primary-dark/0 via-primary-dark to-primary-dark absolute min-h-40"></div>
       <div
         className=" bg-primary-dark pt-10 flex justify-center items-center text-font-primary min-h-screen"
         id="about"
       >
         <motion.div
-          style={{ y: translateYToTop }}
           initial={{ opacity: 0 }}
           animate={firstVisible && { opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
-          className={`absolute inset-0 bg-contain bg-center bg-no-repeat lg:bg-[url('/images/aboutbg.svg')] bg-[url('/images/aboutmobile.svg')]`}
+          className={`absolute inset-0 bg-cover bg-left bg-no-repeat lg:bg-[url('/images/bg-1.svg')] bg-[url('/images/bg-1.svg')]`}
         ></motion.div>
+        <div className="w-full top-0 h-full absolute bg-gradient-to-b from-primary-dark via-primary-dark/0 to-primary-dark "></div>
 
         <div className="w-full flex justify-center items-center relative h-fit py-10 ">
           {firstVisible && (
             <motion.div
+              style={{ y: translateYToTop }}
               initial={{ opacity: 0, y: -50 }}
               animate={firstVisible && { opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: "easeInOut" }}

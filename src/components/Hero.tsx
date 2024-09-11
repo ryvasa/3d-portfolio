@@ -1,16 +1,15 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from "react";
 // import MoonCanvas from "./MoonCanvas";
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { SectionContext, SectionContextType } from '../libs/utils/context';
-import { useScroll as useScrollHook } from '../libs/hooks/useSchroll';
-import { BackgroundBeams } from './Background';
-import { FlipWords } from './FlipWords';
-import { Globe } from './Globe';
+import { motion, useScroll, useTransform } from "framer-motion";
+import { SectionContext, SectionContextType } from "../libs/utils/context";
+import { useScroll as useScrollHook } from "../libs/hooks/useSchroll";
+import { FlipWords } from "./FlipWords";
+import { Globe } from "./Globe";
 
 const Hero = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
   const homeRef = useRef<HTMLDivElement>(null);
-  const { state, dispatch } = useContext<SectionContextType>(SectionContext);
+  const { dispatch } = useContext<SectionContextType>(SectionContext);
 
   // const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
@@ -18,14 +17,14 @@ const Hero = (): JSX.Element => {
 
   useEffect(() => {
     if (isVisible) {
-      dispatch({ section: 'home' });
+      dispatch({ section: "home" });
     }
   }, [isVisible]);
 
   // Parallax effect implementation
   const { scrollYProgress } = useScroll({
     target: homeRef,
-    offset: ['start start', 'end start'],
+    offset: ["start start", "end start"],
   });
 
   const translateYToTop = useTransform(scrollYProgress, [0, 1], [0, -200]);
@@ -45,7 +44,7 @@ const Hero = (): JSX.Element => {
           whileInView={{ opacity: 1 }}
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.0, ease: 'easeInOut' }}
+          transition={{ duration: 1.0, ease: "easeInOut" }}
           className="w-full h-full relative z-[1]"
         >
           <div className="absolute z-10 top-[20%] lg:top-1/2 left-10 lg:left-20 lg:-translate-y-1/2 text-font-primary">
@@ -57,9 +56,9 @@ const Hero = (): JSX.Element => {
               <FlipWords
                 className="text-xl lg:text-3xl font-semibold"
                 words={[
-                  'Web Developer',
-                  'Back-end Developer',
-                  'Front-end Developer',
+                  "Web Developer",
+                  "Back-end Developer",
+                  "Front-end Developer",
                 ]}
               />
             )}
@@ -155,7 +154,7 @@ const Hero = (): JSX.Element => {
             className="h-full w-full flex justify-end sticky top-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1.0, ease: 'easeInOut' }}
+            transition={{ duration: 1.0, ease: "easeInOut" }}
           >
             {/* <MoonCanvas
             onLoad={() => {

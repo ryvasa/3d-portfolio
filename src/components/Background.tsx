@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { useScroll as useScrollHook } from "../libs/hooks/useSchroll";
-import { motion, useScroll } from "framer-motion";
+import React, { useContext, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { cn } from "../libs/utils/cn";
 import { SectionContext, SectionContextType } from "../libs/utils/context";
 
@@ -135,13 +134,12 @@ const Background = () => {
   return (
     <div className="absolute top-0 w-full h-full bg-primary-dark">
       <motion.div
-        className="h-full w-full flex justify-end "
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.0, ease: "easeInOut" }}
-      >
-        <BackgroundBeams />
-      </motion.div>
+        transition={{ duration: 0.7, ease: "easeInOut" }}
+        className={`absolute inset-0 bg-cover bg-left bg-no-repeat lg:bg-[url('/images/bg-1.svg')] bg-[url('/images/bg-1.svg')]`}
+      ></motion.div>
+      <div className="w-full top-0 h-full absolute bg-gradient-to-b from-primary-dark via-primary-dark/0 to-primary-dark "></div>
     </div>
   );
 };

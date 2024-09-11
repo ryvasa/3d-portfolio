@@ -9,14 +9,6 @@ const Work = () => {
   const [isVisible, setIsVisible] = useState(false);
   const workRef = useRef<HTMLDivElement>(null);
   const { dispatch } = useContext(SectionContext);
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    if (workRef.current) {
-      const rect = workRef.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
-  }, [workRef]);
 
   const expirience = useMemo(
     () => [
@@ -72,8 +64,6 @@ const Work = () => {
   });
 
   const translateYToTop = useTransform(scrollYProgress, [0, 1], [200, -300]);
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
     <div
@@ -81,16 +71,6 @@ const Work = () => {
       ref={workRef}
       className="w-full flex justify-center items-center relative"
     >
-      <div className="absolute bg-gradient-to-b from-primary-dark via-primary-dark/0 to-primary-dark z-[1] h-full w-full"></div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.7, ease: "easeInOut" }}
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-primary-dark "
-        style={{
-          backgroundImage: "url('/images/workbg.svg')",
-        }}
-      ></motion.div>
       <motion.div
         id="work-list"
         style={{ y: translateYToTop }}
@@ -99,6 +79,7 @@ const Work = () => {
         <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
           {expirience.map((exp, index) => (
             <li key={index}>
+              {index !== 0 && <hr className="bg-dark-xs" />}
               <div className="timeline-middle">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +107,7 @@ const Work = () => {
                   index % 2 !== 0
                     ? "timeline-end"
                     : "timeline-start  md:text-end"
-                } my-5 rounded-md bg-dark-lg/50 backdrop-blur-sm p-4 shadow-sm lg:w-[500px] w-[90%]`}
+                } my-5 rounded-md bg-dark-lg/50 backdrop-blur-sm p-4 shadow-sm lg:w-[500px] w-full  `}
               >
                 <time className="font-mono italic">{exp.time}</time>
                 <div className="text-lg font-black text-dark-xs">
@@ -134,34 +115,33 @@ const Work = () => {
                 </div>
                 {firstVisible && (
                   <TextGenerateEffect
-                    className="lg:text-base text-xs"
                     words={exp.description}
                     initialDelay={index / 10}
                     chunkSize={exp.description.split(" ").length}
                   />
                 )}
               </motion.div>
+              {index !== expirience.length - 1 && <hr className="bg-dark-xs" />}
             </li>
           ))}
         </ul>
-      </motion.div>
-      <motion.div
-        style={{
-          height: height + "px",
-          y: translateYToTop,
-        }}
-        className="absolute left-1 lg:left-1/2 top-0 transform -translate-x-1/2 overflow-hidden w-[5px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-dark-lg to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
-      >
-        <motion.div
-          style={{
-            height: heightTransform,
-            opacity: opacityTransform,
-          }}
-          className="absolute inset-x-0 top-0 w-[5px] bg-gradient-to-t from-dark-xs via-dark-md to-dark-md rounded-full"
-        />
       </motion.div>
     </div>
   );
 };
 
 export default Work;
+// <div
+//   style={{
+//     height: height + "px",
+//   }}
+//   className="absolute left-1 lg:left-1/2 top-0 transform -translate-x-1/2 overflow-hidden w-[5px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-dark-lg to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+// >
+//   <motion.div
+//     style={{
+//       height: heightTransform,
+//       opacity: opacityTransform,
+//     }}
+//     className="absolute inset-x-0 top-0 w-[5px] bg-gradient-to-t from-dark-xs via-dark-md to-dark-md rounded-full"
+//   />
+// </div>
