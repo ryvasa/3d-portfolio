@@ -28,18 +28,18 @@ const Skills = () => {
     offset: ["start start", "end start"],
   });
 
-  const translateYToTop = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const translateYToTop = useTransform(scrollYProgress, [0, 1], [100, -300]);
   return (
     <div
       id="skills"
       ref={skillsRef}
-      className="relative flex justify-center items-center min-h-screen "
+      className="relative flex justify-center items-center lg:min-h-screen"
     >
       <div className="relative flex justify-center items-center w-full">
         <div className="lg:lg:w-4/5 w-[95%] relative z-10">
           <motion.div
             style={{ y: translateYToTop }}
-            className="grid gap-1 lg:grid-cols-4 grid-rows-5"
+            className="grid gap-1 grid-cols-4 grid-rows-5"
           >
             <div className="bg-dark-lg/40 backdrop-blur-sm rounded-md p-2 lg:p-8 col-span-2 row-span-4">
               <h2 className="text-dark-xs lg:text-4xl font-bold text-sm">
@@ -48,7 +48,9 @@ const Skills = () => {
               <p className="text-xs lg:text-base py-4">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Dignissimos a quia libero sit magnam iste magni reprehenderit
-                esse, id dicta?
+                esse, id dicta? Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Quod obcaecati consequatur eos quisquam labore
+                dicta magni laudantium, odit nostrum quos iusto maiores
               </p>
             </div>
             <div className="bg-dark-lg/40 backdrop-blur-sm rounded-md lg:p-8 col-span-2 col-start-1 row-start-5 flex justify-center items-center relative">
@@ -61,8 +63,8 @@ const Skills = () => {
                 ]}
               />
             </div>
-            <div className="lg:bg-transparent bg-dark-lg/40 backdrop-blur-sm lg:backdrop-blur-none rounded-md col-span-2 col-start-3 row-start-1 flex justify-center items-center">
-              <h2 className="text-dark-xs font-bold text-4xl">
+            <div className="col-span-2 col-start-3 row-start-1 flex justify-center items-center">
+              <h2 className="text-dark-xs font-bold text-xl lg:text-4xl">
                 Thecnical Skill
               </h2>
             </div>

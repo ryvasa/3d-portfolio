@@ -150,12 +150,7 @@ const Hero = (): JSX.Element => {
           </div>
         </motion.div>
         <div className="fixed top-0 w-full h-full ">
-          <motion.div
-            className="h-full w-full flex justify-end sticky top-0"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.0, ease: "easeInOut" }}
-          >
+          <div className="h-full w-full flex justify-end sticky top-0">
             {/* <MoonCanvas
             onLoad={() => {
               setIsLoaded(true);
@@ -163,7 +158,7 @@ const Hero = (): JSX.Element => {
           />*/}
             <Globe className="z-10 bg-primary-dark" />
             {/* <BackgroundBeams /> */}
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

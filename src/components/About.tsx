@@ -3,7 +3,6 @@ import { SectionContext } from "../libs/utils/context";
 import { useScroll as useScrollHook } from "../libs/hooks/useSchroll";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { TextGenerateEffect } from "./TextGeneratorEffect";
-import { FlipWords } from "./FlipWords";
 
 const About = (): JSX.Element => {
   const [isVisible, setIsVisible] = useState(false);
@@ -40,10 +39,10 @@ const About = (): JSX.Element => {
   const translateYToTop = useTransform(scrollYProgress, [0, 1], [100, -300]);
 
   return (
-    <div className="relative" ref={aboutRef}>
+    <div className="relative py-4" ref={aboutRef}>
       <div className="w-full -top-20 bg-gradient-to-b from-primary-dark/0 via-primary-dark to-primary-dark absolute min-h-40"></div>
       <div
-        className=" bg-primary-dark pt-10 flex justify-center items-center text-font-primary min-h-screen"
+        className=" bg-primary-dark pt-10 flex justify-center items-center text-font-primary lg:min-h-screen"
         id="about"
       >
         <motion.div
@@ -56,39 +55,39 @@ const About = (): JSX.Element => {
 
         <div className="w-full flex justify-center items-center relative h-fit py-10 ">
           {firstVisible && (
-            <motion.div
-              style={{ y: translateYToTop }}
-              initial={{ opacity: 0, y: -50 }}
-              animate={firstVisible && { opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: "easeInOut" }}
-              className="lg:w-4/5 w-[95%]  flex flex-col lg:grid lg:grid-rows-5 lg:grid-flow-col justify-center items-center gap-4 h-full "
-            >
-              <div className="row-span-5 overflow-hidden rounded-md bg-dark-lg/40 backdrop-blur-sm w-full h-full flex justify-center items-center ">
-                <span className="w-full h-full absolute z-10 bg-gradient-to-b from-[#0E0E0E]/0 via-[#0E0E0E]/20 to-[#0E0E0E]"></span>
-                <img src="/images/pic.png" alt="photo" className="" />
-              </div>
-              <div className="row-span-1 rounded-md bg-dark-lg/40 backdrop-blur-sm py-4 px-8 w-full h-full flex justify-center items-center">
-                {isVisible && (
-                  <FlipWords
-                    className="text-dark-xs text-xl lg:text-3xl font-semibold"
-                    words={[
-                      "Web Developer",
-                      "Back-end Developer",
-                      "Front-end Developer",
-                    ]}
+            <>
+              <motion.div
+                style={{ y: translateYToTop }}
+                initial={{ opacity: 0, y: -50 }}
+                animate={firstVisible && { opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, ease: "easeInOut" }}
+                className="lg:w-4/5 w-[95%]  grid grix-cols-1 lg:grid-cols-3 lg:grid-rows-6 gap-1 h-full "
+              >
+                <div className="w-full h-full flex lg:justify-center items-center">
+                  <p className="text-dark-xs text-xl lg:text-3xl font-semibold p-2">
+                    About Me
+                  </p>
+                </div>
+                <div className="lg:row-span-5 lg:row-start-2 overflow-hidden rounded-md bg-dark-lg/40 backdrop-blur-sm w-full h-full flex justify-center items-center ">
+                  <span className="w-full h-full absolute z-10 bg-gradient-to-b from-[#0E0E0E]/0 via-[#0E0E0E]/20 to-[#0E0E0E]"></span>
+                  <img
+                    src="/images/pic.png"
+                    alt="photo"
+                    className="h-96 w-96 object-cover"
                   />
-                )}
-              </div>
-              <div className="row-span-4 rounded-md bg-dark-lg/40 backdrop-blur-sm py-4 px-8 min-w-full min-h-full flex justify-center items-center">
-                <TextGenerateEffect
-                  words={text}
-                  chunkSize={20}
-                  initialDelay={0.5}
-                  duration={0.3}
-                  className="text-md"
-                />
-              </div>
-            </motion.div>
+                </div>
+
+                <div className="lg:col-span-2 lg:row-span-6 rounded-md bg-dark-lg/40 backdrop-blur-sm py-4 px-8 min-w-full min-h-full flex justify-center items-center">
+                  <TextGenerateEffect
+                    words={text}
+                    chunkSize={20}
+                    initialDelay={0.5}
+                    duration={0.3}
+                    className="lg:text-base text-xs"
+                  />
+                </div>
+              </motion.div>
+            </>
           )}
         </div>
       </div>

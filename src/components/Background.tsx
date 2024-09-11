@@ -139,7 +139,7 @@ const Background = () => {
         transition={{ duration: 0.7, ease: "easeInOut" }}
         className={`absolute inset-0 bg-cover bg-left bg-no-repeat lg:bg-[url('/images/bg-1.svg')] bg-[url('/images/bg-1.svg')]`}
       ></motion.div>
-      <div className="w-full top-0 h-full absolute bg-gradient-to-b from-primary-dark via-primary-dark/0 to-primary-dark "></div>
+      <div className="w-full top-0 h-full absolute bg-gradient-to-b from-primary-dark via-primary-dark/0 to-primary-dark via-65%"></div>
     </div>
   );
 };

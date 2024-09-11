@@ -69,14 +69,17 @@ const Work = () => {
     <div
       id="work"
       ref={workRef}
-      className="w-full flex justify-center items-center relative"
+      className="w-full flex justify-center items-center relative pt-4"
     >
       <motion.div
         id="work-list"
         style={{ y: translateYToTop }}
         className="lg:w-4/5 w-[95%]  relative z-[2]  flex justify-center items-center "
       >
-        <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+        <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical pr-4">
+          <h1 className="text-xl lg:text-3xl text-dark-xs font-bold absolute lg:top-4 -top-10">
+            Work Experience
+          </h1>
           {expirience.map((exp, index) => (
             <li key={index}>
               {index !== 0 && <hr className="bg-dark-xs" />}
@@ -104,7 +107,7 @@ const Work = () => {
                   ease: "easeInOut",
                 }}
                 className={`${
-                  index % 2 !== 0
+                  index % 2 === 0
                     ? "timeline-end"
                     : "timeline-start  md:text-end"
                 } my-5 rounded-md bg-dark-lg/50 backdrop-blur-sm p-4 shadow-sm lg:w-[500px] w-full  `}
