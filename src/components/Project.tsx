@@ -1,8 +1,8 @@
-import { useContext, useEffect, useRef, useState } from 'react';
-import { useScroll as useScrollHook } from '../libs/hooks/useSchroll';
-import { SectionContext } from '../libs/utils/context';
-import { LayoutGrid } from './LayoutGrid';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useContext, useEffect, useRef, useState } from "react";
+import { useScroll as useScrollHook } from "../libs/hooks/useSchroll";
+import { SectionContext } from "../libs/utils/context";
+import { LayoutGrid } from "./LayoutGrid";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Project = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -12,7 +12,6 @@ const Project = () => {
 
   const handleVisible = (): void => {
     if (!firstVisible) {
-      console.log('test');
       setFirstVisible(true);
     }
   };
@@ -21,26 +20,26 @@ const Project = () => {
 
   useEffect(() => {
     if (isVisible) {
-      dispatch({ section: 'projects' });
+      dispatch({ section: "projects" });
     }
   }, [isVisible]);
   const { scrollYProgress } = useScroll({
     target: projectRef,
-    offset: ['start start', 'end start'],
+    offset: ["start start", "end start"],
   });
 
   const translateYToTop = useTransform(scrollYProgress, [0, 1], [100, -300]);
 
   return (
     <div id="projects" ref={projectRef} className="min-h-screen relative">
-      <div className="absolute bg-gradient-to-b from-primary-dark via-primary-dark/50 to-primary-dark/0 top-0 h-full w-full"></div>
+      <div className="absolute bg-gradient-to-b from-primary-dark via-primary-dark/50 to-primary-dark/0 top-0 h-full w-full "></div>
       <div className="flex justify-center items-center">
         <motion.div
-          style={{ translateY: translateYToTop }}
-          className="h-screen w-4/5"
+          style={{ y: translateYToTop }}
+          className="h-screen lg:w-4/5 w-[95%]"
           initial={!firstVisible && { opacity: 0 }}
           animate={firstVisible && { opacity: 1 }}
-          transition={{ duration: 1.0, ease: 'easeInOut' }}
+          transition={{ duration: 1.0, ease: "easeInOut" }}
         >
           <LayoutGrid cards={cards} />
         </motion.div>
@@ -114,29 +113,31 @@ const cards = [
   {
     id: 1,
     content: <SkeletonOne />,
-    className: 'md:col-span-2',
+    className: "lg:col-span-3 lg:row-span-4 col-start-3 col-span-2 row-span-3",
     thumbnail:
-      'https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      "https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 2,
     content: <SkeletonTwo />,
-    className: 'col-span-1',
+    className: "col-span-2 row-span-3 row-start-2 ",
     thumbnail:
-      'https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 3,
     content: <SkeletonThree />,
-    className: 'col-span-1',
+    className:
+      "lg:col-span-3 lg:row-span-3 lg:row-start-5 col-span-2 row-span-4 col-start-3 row-start-4",
     thumbnail:
-      'https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 4,
     content: <SkeletonFour />,
-    className: 'md:col-span-2',
+    className:
+      "lg:col-span-2 lg:row-span-3 lg:col-start-4 lg:row-start-5 col-span-2 row-span-3 row-start-5",
     thumbnail:
-      'https://images.unsplash.com/photo-1475070929565-c985b496cb9f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      "https://images.unsplash.com/photo-1475070929565-c985b496cb9f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
