@@ -72,10 +72,10 @@ const Skills = () => {
               <h3 className="text-dark-xs text-xl font-semibold pb-2">
                 Back-end
               </h3>
-              <ul className="grid grid-cols-2 gap-2">
-                <li className="flex gap-1 items-center">
+              <ul className="grid lg:grid-cols-2 lg:gap-2 grid-cols-1">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -88,9 +88,9 @@ const Skills = () => {
                   </svg>
                   Node
                 </li>
-                <li className="flex gap-1 items-center">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -103,9 +103,9 @@ const Skills = () => {
                   </svg>
                   NestJS
                 </li>
-                <li className="flex gap-1 items-center">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -118,9 +118,9 @@ const Skills = () => {
                   </svg>
                   ExpressJS
                 </li>
-                <li className="flex gap-1 items-center">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -133,9 +133,9 @@ const Skills = () => {
                   </svg>
                   PostgreSQL
                 </li>
-                <li className="flex gap-1 items-center">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -148,9 +148,9 @@ const Skills = () => {
                   </svg>
                   MySQL
                 </li>
-                <li className="flex gap-1 items-center">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -163,9 +163,9 @@ const Skills = () => {
                   </svg>
                   RabbitMQ
                 </li>
-                <li className="flex gap-1 items-center">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -178,9 +178,9 @@ const Skills = () => {
                   </svg>
                   Redis
                 </li>
-                <li className="flex gap-1 items-center">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -199,10 +199,10 @@ const Skills = () => {
               <h3 className="text-dark-xs text-xl font-semibold pb-2">
                 Front-end
               </h3>
-              <ul className="grid grid-cols-2 gap-2">
-                <li className="flex gap-1 items-center">
+              <ul className="grid lg:grid-cols-2 lg:gap-2 grid-cols-1">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -215,9 +215,9 @@ const Skills = () => {
                   </svg>
                   CSS
                 </li>
-                <li className="flex gap-1 items-center">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -230,9 +230,9 @@ const Skills = () => {
                   </svg>
                   TailwindCSS
                 </li>
-                <li className="flex gap-1 items-center">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -245,9 +245,9 @@ const Skills = () => {
                   </svg>
                   ReactJS
                 </li>
-                <li className="flex gap-1 items-center">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
@@ -260,9 +260,9 @@ const Skills = () => {
                   </svg>
                   NextJS
                 </li>
-                <li className="flex gap-1 items-center">
+                <li className="flex gap-1 items-center text-xs lg:text-base">
                   <svg
-                    className="w-5 h-5"
+                    className="w-3 h-3 lg:w-5 lg:h-5"
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
