@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import { useContext, useState } from 'react';
-import { SectionContext } from '../libs/utils/context';
+import { motion } from "framer-motion";
+import { useContext, useState } from "react";
+import { SectionContext } from "../libs/utils/context";
 
 const Navbar = (): JSX.Element => {
   const [isAtTop, setIsAtTop] = useState<boolean>(true);
@@ -15,24 +15,22 @@ const Navbar = (): JSX.Element => {
   };
 
   const menu = [
-    { name: 'Home', link: '#home' },
-    { name: 'About', link: '#about' },
-    { name: 'Projects', link: '#projects' },
-    { name: 'Work', link: '#work' },
-    { name: 'Contact', link: '#contact' },
+    { name: "Home", link: "#home" },
+    { name: "About", link: "#about" },
+    { name: "Projects", link: "#projects" },
+    { name: "Skills", link: "#skills" },
+    { name: "Work", link: "#work" },
+    { name: "Contact", link: "#contact" },
   ];
 
   const { state } = useContext(SectionContext);
 
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.0, ease: 'easeInOut', delay: 0.7 }}
+    <nav
       className={`${
         isAtTop
-          ? 'bg-transparent'
-          : 'bg-primary-dark/50 backdrop-blur-md shadow-md'
+          ? "bg-transparent"
+          : "bg-primary-dark/50 backdrop-blur-md shadow-md"
       } z-20 text-font-primary w-full fixed top-0 left-0 py-3 px-8 flex justify-between items-center`}
     >
       <img
@@ -77,8 +75,8 @@ const Navbar = (): JSX.Element => {
                   whileTap={{ scale: 0.9 }}
                   className={`${
                     state.section === name.toLowerCase()
-                      ? 'text-dark-xs'
-                      : 'text-font-primary '
+                      ? "text-dark-xs"
+                      : "text-font-primary "
                   } border-b-2 border-transparent hover:border-dark-xs `}
                 >
                   <a href={link} onClick={() => setIsOpen(false)}>
@@ -100,8 +98,8 @@ const Navbar = (): JSX.Element => {
               whileTap={{ scale: 0.9 }}
               className={`${
                 state.section === name.toLowerCase()
-                  ? 'text-dark-xs'
-                  : 'text-font-primary '
+                  ? "text-dark-xs"
+                  : "text-font-primary "
               } border-b-2 border-transparent hover:border-dark-xs transition-colors duration-300`}
             >
               <a href={link}>{name}</a>
@@ -109,7 +107,7 @@ const Navbar = (): JSX.Element => {
           ))}
         </ul>
       </div>
-    </motion.nav>
+    </nav>
   );
 };
 

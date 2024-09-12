@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { motion, stagger, useAnimate } from 'framer-motion';
-import { cn } from '../libs/utils/cn';
+import { useEffect } from "react";
+import { motion, stagger, useAnimate } from "framer-motion";
+import { cn } from "../libs/utils/cn";
 
 export const TextGenerateEffect = ({
   words,
@@ -25,25 +25,25 @@ export const TextGenerateEffect = ({
   const chunkArray = (arr: string[], size: number) => {
     const result: string[] = [];
     for (let i = 0; i < arr.length; i += size) {
-      result.push(arr.slice(i, i + size).join(' '));
+      result.push(arr.slice(i, i + size).join(" "));
     }
     return result;
   };
 
-  const wordsArray = words.split(' ');
+  const wordsArray = words.split(" ");
   const phrasesArray = chunkArray(wordsArray, chunkSize); // Membagi menjadi frasa
 
   useEffect(() => {
     animate(
-      'span',
+      "span",
       {
         opacity: 1,
-        filter: filter ? 'blur(0px)' : 'none',
+        filter: filter ? "blur(0px)" : "none",
       },
       {
         duration: duration ? duration : 1,
         delay: stagger(staggerDelay, { startDelay: initialDelay }),
-      }
+      },
     );
   }, [scope.current]);
 
@@ -54,12 +54,12 @@ export const TextGenerateEffect = ({
           return (
             <motion.span
               key={phrase + idx}
-              className="opacity-0"
+              className="opacity-0 subpixel-antialiased"
               style={{
-                filter: filter ? 'blur(10px)' : 'none',
+                filter: filter ? "blur(10px)" : "none",
               }}
             >
-              {phrase}{' '}
+              {phrase}{" "}
             </motion.span>
           );
         })}
@@ -69,7 +69,9 @@ export const TextGenerateEffect = ({
 
   return (
     <div className={cn(className)}>
-      <div className="leading-snug tracking-wide">{renderPhrases()}</div>
+      <div className="leading-snug tracking-wide subpixel-antialiased">
+        {renderPhrases()}
+      </div>
     </div>
   );
 };

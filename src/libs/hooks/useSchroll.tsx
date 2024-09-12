@@ -7,7 +7,6 @@ export const useScroll = (
   threshold?: number
 ) => {
   useEffect(() => {
-    console.log('Observing:', ref.current);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
