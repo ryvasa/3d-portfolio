@@ -57,9 +57,7 @@ export default Project;
 const SkeletonOne = () => {
   return (
     <div>
-      <p className="font-bold md:text-4xl text-xl text-white">
-        House in the woods
-      </p>
+      <p className="font-bold md:text-4xl text-xl text-white">Online Store</p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         A serene and tranquil retreat, this house in the woods offers a peaceful
@@ -72,9 +70,7 @@ const SkeletonOne = () => {
 const SkeletonTwo = () => {
   return (
     <div>
-      <p className="font-bold md:text-4xl text-xl text-white">
-        House above the clouds
-      </p>
+      <p className="font-bold md:text-4xl text-xl text-white">Blog</p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         Perched high above the world, this house offers breathtaking views and a
@@ -87,9 +83,7 @@ const SkeletonTwo = () => {
 const SkeletonThree = () => {
   return (
     <div>
-      <p className="font-bold md:text-4xl text-xl text-white">
-        Greens all over
-      </p>
+      <p className="font-bold md:text-4xl text-xl text-white">Sosmed App</p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
         A house surrounded by greenery and nature&apos;s beauty. It&apos;s the
@@ -102,7 +96,7 @@ const SkeletonFour = () => {
   return (
     <div>
       <p className="font-bold md:text-4xl text-xl text-white">
-        Rivers are serene
+        Addmin Dashboard
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
@@ -118,26 +112,26 @@ const cards = [
     id: 1,
     content: <SkeletonOne />,
     className: "lg:col-span-3 lg:row-span-4 col-start-3 col-span-2 row-span-3",
-    thumbnail: "/images/projects/1.png",
+    thumbnail: "/images/projects/home.png",
   },
   {
     id: 2,
     content: <SkeletonTwo />,
     className: "col-span-2 row-span-3 row-start-2 ",
-    thumbnail: "/images/projects/2.png",
+    thumbnail: "/images/projects/blog.png",
   },
   {
     id: 3,
     content: <SkeletonThree />,
     className:
       "lg:col-span-3 lg:row-span-3 lg:row-start-5 col-span-2 row-span-4 col-start-3 row-start-4",
-    thumbnail: "/images/projects/3.png",
+    thumbnail: "/images/projects/sosmed.png",
   },
   {
     id: 4,
     content: <SkeletonFour />,
     className:
       "lg:col-span-2 lg:row-span-3 lg:col-start-4 lg:row-start-5 col-span-2 row-span-3 row-start-5",
-    thumbnail: "/images/projects/4.png",
+    thumbnail: "/images/projects/dashboard.png",
   },
 ];
