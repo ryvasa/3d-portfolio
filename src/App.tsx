@@ -2,7 +2,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Project from "./components/Project";
-import Work from "./components/Work";
+import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Skills from "./components/Skills";
 import Background from "./components/Background";
@@ -18,7 +18,7 @@ function App(): JSX.Element {
          */}
         <Background />
         <Skills />
-        <Work />
+        <Experience />
       </div>
       {/*
       <TimelineDemo />

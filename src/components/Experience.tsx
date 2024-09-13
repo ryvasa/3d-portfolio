@@ -4,41 +4,34 @@ import { useScroll as useScrollHook } from "../libs/hooks/useSchroll";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { TextGenerateEffect } from "./TextGeneratorEffect";
 
-const Work = () => {
+const Experience = () => {
   const [firstVisible, setFirstVisible] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const workRef = useRef<HTMLDivElement>(null);
+  const experienceRef = useRef<HTMLDivElement>(null);
   const { dispatch } = useContext(SectionContext);
 
   const expirience = useMemo(
     () => [
       {
-        time: 1984,
-        title: "First Macintosh computer",
+        time: "11 September 2023 - 2024",
+        title: "IDCamp 2023 (React developer)",
         description: `The Apple Macintosh—later rebranded as the Macintosh 128K—is the original Apple Macintosh personal computer. It played a pivotal role in establishing desktop publishing as a general office function. The motherboard, a 9 in (23 cm) CRT monitor, and a floppy drive were housed in a beige case with integrated carrying handle; it came with a keyboard and single-button mouse.`,
       },
       {
-        time: 1998,
-        title: "iMac",
+        time: "25 Januari 2023 - 3 November 2023",
+        title: "DBS Foundation Coding Camp (Backend developer)",
         description: `iMac is a family of all-in-one Mac desktop computers designed and built by Apple Inc. It has been the primary part of Apple's consumer desktop offerings since its debut in August 1998, and has evolved through seven distinct forms`,
       },
       {
-        time: 2001,
-        title: "iPod",
+        time: "1 Mei 2023 - 30 Juli 2023",
+        title:
+          "PESILAT (Pelatihan Vokasi Kilat) 2023 by Alkdemi (Fullstack   developer)",
         description: `The iPod is a discontinued series of portable media players and multi-purpose mobile devices designed and marketed by Apple Inc. The first version was released on October 23, 2001, about 8+1⁄2 months after the Macintosh version of iTunes was released. Apple sold an estimated 450 million iPod products as of 2022. Apple discontinued the iPod product line on May 10, 2022. At over 20 years, the iPod brand is the oldest to be discontinued by Apple`,
       },
       {
-        time: 2007,
-        title: "iPhone",
+        time: "Oktober 2022 - Desember 2022",
+        title: "DevOps and Back-End Developer Scholarship Program",
         description: ` iPhone is a line of smartphones produced by Apple Inc. that use Apple's own iOS mobile operating system. The first-generation iPhone was announced by then-Apple CEO Steve Jobs on January 9, 2007. Since then, Apple has annually released new iPhone models and iOS updates. As of November 1, 2018, more than 2.2 billion iPhones had been sold. As of 2022, the iPhone accounts for 15.6% of global smartphone market share`,
-      },
-      {
-        time: 2015,
-        title: "Apple Watch",
-        description: `The Apple Watch is a line of smartwatches produced by Apple Inc.
- It incorporates fitness tracking, health-oriented capabilities,
- and wireless telecommunication, and integrates with iOS and other
- Apple products and services`,
       },
     ],
     [],
@@ -50,16 +43,16 @@ const Work = () => {
     }
   };
 
-  useScrollHook(setIsVisible, workRef, handleVisible, 0.2);
+  useScrollHook(setIsVisible, experienceRef, handleVisible, 0.2);
 
   useEffect(() => {
     if (isVisible) {
-      dispatch({ section: "work" });
+      dispatch({ section: "experience" });
     }
   }, [isVisible, dispatch]);
 
   const { scrollYProgress } = useScroll({
-    target: workRef,
+    target: experienceRef,
     offset: ["start end", "end start"],
   });
 
@@ -67,18 +60,18 @@ const Work = () => {
 
   return (
     <div
-      id="work"
-      ref={workRef}
+      id="experience"
+      ref={experienceRef}
       className="w-full flex justify-center items-center relative pt-4"
     >
       <motion.div
-        id="work-list"
+        id="experience-list"
         style={{ y: translateYToTop }}
         className="lg:w-4/5 w-[95%]  relative z-[2]  flex justify-center items-center "
       >
         <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical pr-4">
           <h1 className="text-xl lg:text-3xl text-dark-xs font-bold absolute lg:top-4 -top-10">
-            Work Experience
+            Experience
           </h1>
           {expirience.map((exp, index) => (
             <li key={index}>
@@ -133,7 +126,7 @@ const Work = () => {
   );
 };
 
-export default Work;
+export default Experience;
 // <div
 //   style={{
 //     height: height + "px",

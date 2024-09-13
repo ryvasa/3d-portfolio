@@ -19,7 +19,7 @@ const Navbar = (): JSX.Element => {
     { name: "About", link: "#about" },
     { name: "Projects", link: "#projects" },
     { name: "Skills", link: "#skills" },
-    { name: "Work", link: "#work" },
+    { name: "Experience", link: "#experience" },
     { name: "Contact", link: "#contact" },
   ];
 
