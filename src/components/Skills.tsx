@@ -41,7 +41,7 @@ const Skills = () => {
             style={{ y: translateYToTop }}
             className="grid gap-1 grid-cols-4 grid-rows-5"
           >
-            <div className="bg-dark-lg/40 backdrop-blur-sm rounded-md p-2 lg:p-8 col-span-2 row-span-4">
+            <div className="bg-dark-lg/40 border border-dark-lg backdrop-blur-sm rounded-md p-2 lg:p-8 col-span-2 row-span-4">
               <h2 className="text-dark-xs lg:text-4xl font-bold text-sm">
                 Skills
               </h2>
@@ -53,7 +53,7 @@ const Skills = () => {
                 dicta magni laudantium, odit nostrum quos iusto maiores
               </p>
             </div>
-            <div className="bg-dark-lg/40 backdrop-blur-sm rounded-md lg:p-8 col-span-2 col-start-1 row-start-5 flex justify-center items-center relative">
+            <div className="bg-dark-lg/40 border border-dark-lg backdrop-blur-sm rounded-md lg:p-8 col-span-2 col-start-1 row-start-5 flex justify-center items-center relative">
               <FlipWords
                 className="text-dark-xs text-xs lg:text-3xl font-semibold absolute z-10"
                 words={[
@@ -68,7 +68,7 @@ const Skills = () => {
                 TectStack
               </h2>
             </div>
-            <div className="bg-dark-lg/40 backdrop-blur-sm rounded-md p-2 lg:p-8 col-span-2 row-span-2 bg-red-6 col-start-3 row-start-2">
+            <div className="bg-dark-lg/40 border border-dark-lg backdrop-blur-sm rounded-md p-2 lg:p-8 col-span-2 row-span-2 bg-red-6 col-start-3 row-start-2">
               <h3 className="text-dark-xs text-xl font-semibold pb-2">
                 Back-end
               </h3>
@@ -195,7 +195,7 @@ const Skills = () => {
                 </li>
               </ul>
             </div>
-            <div className="bg-dark-lg/40 backdrop-blur-sm rounded-md p-2 lg:p-8 col-span-2 row-span-2 col-start-3 row-start-4">
+            <div className="bg-dark-lg/40 border border-dark-lg backdrop-blur-sm rounded-md p-2 lg:p-8 col-span-2 row-span-2 col-start-3 row-start-4">
               <h3 className="text-dark-xs text-xl font-semibold pb-2">
                 Front-end
               </h3>
@@ -281,7 +281,7 @@ const Skills = () => {
           {/*
           <motion.div
             style={{ translateY: translateYToTop }}
-            className="bg-dark-lg/40 backdrop-blur-sm rounded-md p-10"
+            className="bg-dark-lg/40 border border-dark-lg backdrop-blur-sm rounded-md p-10"
           ></motion.div>
             */}
         </div>

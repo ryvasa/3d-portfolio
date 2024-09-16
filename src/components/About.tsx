@@ -68,7 +68,7 @@ const About = (): JSX.Element => {
                     About Me
                   </p>
                 </div>
-                <div className="lg:row-span-5 lg:row-start-2 overflow-hidden rounded-md bg-dark-lg/40 backdrop-blur-sm w-full h-full flex justify-center items-center ">
+                <div className="lg:row-span-5 lg:row-start-2 overflow-hidden rounded-md bg-dark-lg/40 border border-dark-lg backdrop-blur-sm w-full h-full flex justify-center items-center ">
                   <span className="w-full h-full absolute z-10 bg-gradient-to-b from-[#0E0E0E]/0 via-[#0E0E0E]/20 to-[#0E0E0E]"></span>
                   <img
                     src="/images/pic.png"
@@ -77,7 +77,7 @@ const About = (): JSX.Element => {
                   />
                 </div>
 
-                <div className="lg:col-span-2 lg:row-span-6 rounded-md bg-dark-lg/40 backdrop-blur-sm py-4 px-8 min-w-full min-h-full flex justify-center items-center">
+                <div className="lg:col-span-2 lg:row-span-6 rounded-md bg-dark-lg/40 border border-dark-lg backdrop-blur-sm py-4 px-8 min-w-full min-h-full flex justify-center items-center">
                   <TextGenerateEffect
                     words={text}
                     chunkSize={20}

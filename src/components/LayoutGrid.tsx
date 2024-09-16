@@ -68,7 +68,7 @@ const ImageComponent = ({ card }: { card: Card }) => {
       layoutId={`image-${card.id}-image`}
       src={card.thumbnail}
       className={cn(
-        "object-cover object-top absolute inset-0 h-full w-full transition duration-200 shadow-lg drop-shadow-lg",
+        "object-cover border border-dark-lg object-top absolute inset-0 h-full w-full transition duration-200 shadow-lg drop-shadow-lg",
       )}
       alt="thumbnail"
     />

@@ -77,7 +77,7 @@ const Contact = () => {
         <form
           ref={form}
           onSubmit={sendEmail}
-          className="bg-dark-xl/90 backdrop-blur-sm flex flex-col gap-4 lg:p-8 p-4 rounded-md"
+          className="bg-dark-xl/90 border border-dark-lg backdrop-blur-sm flex flex-col gap-4 lg:p-8 p-4 rounded-md"
         >
           <p className="text-xs lg:text-lg">Lorem ipsum dolor sit amet!</p>
           <div className="flex flex-col lg:flex-row gap-4">
