@@ -42,7 +42,7 @@ const Skills = () => {
             className="grid gap-1 grid-cols-4 grid-rows-5"
           >
             <div className="bg-dark-lg/40 border border-dark-lg backdrop-blur-sm rounded-md p-2 lg:p-8 col-span-2 row-span-4">
-              <h2 className="text-dark-xs lg:text-4xl font-bold text-sm">
+              <h2 className="text-dark-xs font-bold text-xl lg:text-4xl">
                 Skills
               </h2>
               <p className="text-xs lg:text-base py-4">
