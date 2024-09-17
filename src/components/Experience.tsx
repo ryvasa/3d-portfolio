@@ -105,8 +105,10 @@ const Experience = () => {
                     : "timeline-start  md:text-end"
                 } my-5 rounded-md bg-dark-lg/50 border border-dark-lg backdrop-blur-sm p-4 shadow-sm lg:w-[500px] w-full  `}
               >
-                <time className="font-mono italic">{exp.time}</time>
-                <div className="text-lg font-black text-dark-xs">
+                <time className="font-mono italic text-sm lg:text-lg">
+                  {exp.time}
+                </time>
+                <div className="lg:text-lg text-base font-semibold text-dark-xs">
                   {exp.title}
                 </div>
                 {firstVisible && (
@@ -114,6 +116,7 @@ const Experience = () => {
                     words={exp.description}
                     initialDelay={index / 10}
                     chunkSize={exp.description.split(" ").length}
+                    className="text-xs lg:text-base"
                   />
                 )}
               </motion.div>
