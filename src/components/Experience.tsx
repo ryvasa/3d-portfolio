@@ -103,7 +103,7 @@ const Experience = () => {
                   index % 2 === 0
                     ? "timeline-end"
                     : "timeline-start  md:text-end"
-                } my-5 rounded-md bg-dark-lg/50 backdrop-blur-sm p-4 shadow-sm lg:w-[500px] w-full  `}
+                } my-5 rounded-md bg-dark-lg/50 border border-dark-lg backdrop-blur-sm p-4 shadow-sm lg:w-[500px] w-full  `}
               >
                 <time className="font-mono italic">{exp.time}</time>
                 <div className="text-lg font-black text-dark-xs">
