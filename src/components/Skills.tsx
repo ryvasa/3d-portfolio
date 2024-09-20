@@ -45,13 +45,32 @@ const Skills = () => {
               <h2 className="text-dark-xs font-bold text-xl lg:text-4xl">
                 Skills
               </h2>
-              <p className="text-xs lg:text-base py-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos a quia libero sit magnam iste magni reprehenderit
-                esse, id dicta? Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Quod obcaecati consequatur eos quisquam labore
-                dicta magni laudantium, odit nostrum quos iusto maiores
-              </p>
+              <div className="text-xs lg:text-base pb-4">
+                <ol className="list-decimal px-8">
+                  <li>Building a RESTful API</li>
+                  <li>
+                    Mastering programming languages ​​such as JavaScript and
+                    Typescript
+                  </li>
+                  <li>
+                    Understand the use of supporting tools such as Redis, Nginx,
+                    and Rabbitmq
+                  </li>
+                  <li>Implementing a WebSocket such as socket.io</li>
+                  <li>Have basic knowledge about using AWS</li>
+                  <li>Can operate the Linux operating system</li>
+                </ol>
+                <div className="py-4">
+                  <h3 className="text-dark-xs font-bold text-xl lg:text-2xl">
+                    Other skills
+                  </h3>
+                  <ol className="list-decimal px-8">
+                    <li>Desire to continue learning and developing</li>
+                    <li>Solution to problem</li>
+                    <li>Easily adapt to new technology</li>
+                  </ol>
+                </div>
+              </div>
             </div>
             <div className="bg-dark-lg/40 border border-dark-lg backdrop-blur-sm rounded-md lg:p-8 col-span-2 col-start-1 row-start-5 flex justify-center items-center relative">
               <FlipWords

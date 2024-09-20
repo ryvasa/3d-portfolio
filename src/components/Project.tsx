@@ -60,8 +60,9 @@ const SkeletonOne = () => {
       <p className="font-bold md:text-4xl text-xl text-white">Online Store</p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A serene and tranquil retreat, this house in the woods offers a peaceful
-        escape from the hustle and bustle of city life.
+        This application is an online shop, as a visitor the user can see the
+        items being sold, if interested the user can also add them to the basket
+        and then place an order.
       </p>
     </div>
   );
@@ -73,9 +74,9 @@ const SkeletonTwo = () => {
       <p className="font-bold md:text-4xl text-xl text-white">Blog</p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Perched high above the world, this house offers breathtaking views and a
-        unique living experience. It&apos;s a place where the sky meets home,
-        and tranquility is a way of life.
+        Building a blog application to manage content, users can view, add,
+        delete, and edit article content, other users can also add comments and
+        their responses about the article.
       </p>
     </div>
   );
@@ -86,8 +87,9 @@ const SkeletonThree = () => {
       <p className="font-bold md:text-4xl text-xl text-white">Sosmed App</p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A house surrounded by greenery and nature&apos;s beauty. It&apos;s the
-        perfect place to relax, unwind, and enjoy life.
+        This application has functionality like social media in general, such as
+        creating posts, and giving likes and comments, apart from that users can
+        also understand other users with the realtime chat feature.
       </p>
     </div>
   );
@@ -100,8 +102,9 @@ const SkeletonFour = () => {
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A house by the river is a place of peace and tranquility. It&apos;s the
-        perfect place to relax, unwind, and enjoy life.
+        This is an admin dashboard application. This application aims to manage
+        data on online store applications, such as managing data on goods,
+        sales, users, and also orders made.
       </p>
     </div>
   );
