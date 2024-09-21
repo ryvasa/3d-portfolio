@@ -19,7 +19,7 @@ const Hero = (): JSX.Element => {
     if (isVisible) {
       dispatch({ section: "home" });
     }
-  }, [isVisible]);
+  }, [dispatch, isVisible]);
 
   // Parallax effect implementation
   const { scrollYProgress } = useScroll({

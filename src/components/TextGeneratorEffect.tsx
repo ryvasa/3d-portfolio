@@ -45,7 +45,7 @@ export const TextGenerateEffect = ({
         delay: stagger(staggerDelay, { startDelay: initialDelay }),
       },
     );
-  }, [scope.current]);
+  }, [animate, duration, filter, initialDelay, staggerDelay]);
 
   const renderPhrases = () => {
     return (
